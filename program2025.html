@@ -25,16 +25,92 @@
     body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:radial-gradient(1200px 600px at 10% -10%, #eef0ff 0%, transparent 55%),radial-gradient(900px 500px at 110% 0%, #fff6e6 0%, transparent 60%),var(--bg);overflow-x:hidden;scroll-behavior:smooth;}
     .container{width:min(900px,92vw);margin:0 auto;position:relative;z-index:1;}
     header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow .2s ease;}
+    header:hover { box-shadow: 0 8px 24px rgba(17, 19, 26, 0.08); }
     .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;}
-    .branding{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;}
-    .logo img{height:56px;width:auto;display:block;border-radius:10px;box-shadow:0 4px 14px rgba(17,19,26,0.08);}
+    .branding{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;transition:transform 150ms ease;}
+    .branding:hover { transform: translateY(-1px); }
+    .logo img{height:56px;width:auto;display:block;border-radius:10px;box-shadow:0 4px 14px rgba(17,19,26,0.08);transition:transform 150ms ease;}
+    .logo img:hover { transform: scale(1.02); }
     .title{display:grid;}
     .title .name{font-weight:800;letter-spacing:.2px;font-size:1.55rem;line-height:1.05;}
-    .on{color:var(--blue);} .ear{color:var(--yellow);} .tag{color:var(--muted);font-size:.95rem;}
+    .on{color:var(--blue);font-weight:800;font-size:1.55rem;} .ear{color:var(--yellow);font-weight:800;font-size:1.55rem;} .tag{color:var(--muted);font-size:.95rem;}
     nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
-    nav a{position:relative;text-decoration:none;color:var(--blue);font-weight:600;padding:10px 14px;border-radius:12px;}
-    nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:6px;height:2px;background:var(--gradient);transition:left .2s,right .2s;}
-    nav a:hover{background:#eef0ff;} nav a:hover::after,nav a.active::after{left:14px;right:14px;}
+    nav a{color:var(--blue);text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:600;transition:all 150ms ease;}
+    nav a:hover{background:#eef0ff;transform:translateY(-1px);}
+    /* Navigation dropdown */
+    nav .dropdown {
+      position: relative;
+    }
+
+    nav .dropdown-toggle {
+      position: relative;
+      padding: 10px 14px;
+      border-radius: 12px;
+      transition: all 150ms ease;
+    }
+
+    nav .dropdown-toggle::after {
+      content: "▼";
+      font-size: 0.65rem;
+      margin-left: 6px;
+      transition: transform 200ms ease;
+    }
+
+    nav .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px 0;
+      min-width: 220px;
+      box-shadow: 0 12px 32px rgba(17, 19, 26, 0.12);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: all 200ms ease;
+      z-index: 50;
+      margin-top: 8px;
+    }
+
+    nav .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    nav .dropdown:hover .dropdown-toggle {
+      background: #eef0ff;
+    }
+
+    nav .dropdown:hover .dropdown-toggle::after {
+      transform: rotate(180deg);
+    }
+
+    nav .dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 150ms ease;
+      border-left: 3px solid transparent;
+    }
+
+    nav .dropdown-menu a:hover {
+      background: #eef0ff;
+      border-left-color: var(--yellow);
+      padding-left: 18px;
+    }
+
+    nav .dropdown-menu a:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+
+    nav .dropdown-menu a:last-child {
+      border-radius: 0 0 8px 8px;
+    }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
     @keyframes float { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.05); } 100% { transform: translateY(0) scale(1); } }
     .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gradient);z-index:60;box-shadow:0 2px 20px rgba(249,160,48,0.25);}    
@@ -65,9 +141,13 @@
       </a>
       <nav aria-label="Primary">
         <a href="index.html#about">About</a>
-        <a href="index.html#event">Event</a>
-        <a href="program.html" class="active">Program</a>
-        <a href="index.html#register">Register</a>
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle">Events</a>
+          <div class="dropdown-menu">
+            <a href="program2025.html">2025 Research Day</a>
+            <a href="index.html#event">2026 Research Day</a>
+          </div>
+        </div>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
@@ -485,7 +565,7 @@
           <div style="position:absolute;inset:0;background:radial-gradient(1000px circle at 0% 0%, rgba(74,93,155,0.03), transparent);animation:float 15s ease-in-out infinite;"></div>
           <div style="position:absolute;inset:0;background:radial-gradient(800px circle at 100% 100%, rgba(249,160,48,0.03), transparent);animation:float 12s ease-in-out infinite reverse;"></div>
           <h3 style="margin:0 0 24px;font-size:1.5rem;display:flex;align-items:center;gap:16px;position:relative;">
-            <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;flex-direction:column;gap:6px;"></div>
               <div style="color:var(--ink);font-weight:800;font-size:1.4rem;letter-spacing:-0.3px;display:flex;align-items:center;gap:12px;">
                 <span>Afternoon Sessions</span>
                 <div style="height:3px;width:24px;background:var(--gradient);border-radius:2px;"></div>
