@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ON-EAR | 2026 Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#292C77">
+  <style>
+    :root {
+      --blue: #292C77;
+      --yellow: #F9A030;
+      --ink: #11131a;
+      --muted: #5f667a;
+      --bg: #ffffff;
+      --soft: #f7f8fb;
+      --border: #e8eaf1;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(17,19,26,0.06);
+      --shadow-strong: 0 16px 42px rgba(17,19,26,0.10);
+      --gradient: linear-gradient(135deg, #292C77 0%, #F9A030 100%);
+      --card-transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    *{box-sizing:border-box;} html,body{height:100%;}
+    body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:radial-gradient(1200px 600px at 10% -10%, #eef0ff 0%, transparent 55%),radial-gradient(900px 500px at 110% 0%, #fff6e6 0%, transparent 60%),var(--bg);overflow-x:hidden;scroll-behavior:smooth;}
+    .container{width:min(900px,92vw);margin:0 auto;position:relative;z-index:1;}
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow .2s ease;}
+    header:hover { box-shadow: 0 8px 24px rgba(17, 19, 26, 0.08); }
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;}
+    .branding{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;transition:transform 150ms ease;}
+    .branding:hover { transform: translateY(-1px); }
+    .logo img{height:56px;width:auto;display:block;border-radius:10px;box-shadow:0 4px 14px rgba(17,19,26,0.08);transition:transform 150ms ease;}
+    .logo img:hover { transform: scale(1.02); }
+    .title{display:grid;}
+    .title .name{font-weight:800;letter-spacing:.2px;font-size:1.55rem;line-height:1.05;}
+    .on{color:var(--blue);font-weight:800;font-size:1.55rem;} .ear{color:var(--yellow);font-weight:800;font-size:1.55rem;} .tag{color:var(--muted);font-size:.95rem;}
+    nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+    nav a{color:var(--blue);text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:600;transition:all 150ms ease;}
+    nav a:hover{background:#eef0ff;transform:translateY(-1px);}
+    /* Navigation dropdown */
+    nav .dropdown {
+      position: relative;
+    }
+
+    nav .dropdown-toggle {
+      position: relative;
+      padding: 10px 14px;
+      border-radius: 12px;
+      transition: all 150ms ease;
+    }
+
+    nav .dropdown-toggle::after {
+      content: "▼";
+      font-size: 0.65rem;
+      margin-left: 6px;
+      transition: transform 200ms ease;
+    }
+
+    nav .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px 0;
+      min-width: 220px;
+      box-shadow: 0 12px 32px rgba(17, 19, 26, 0.12);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: all 200ms ease;
+      z-index: 50;
+      margin-top: 8px;
+    }
+
+    nav .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    nav .dropdown:hover .dropdown-toggle {
+      background: #eef0ff;
+    }
+
+    nav .dropdown:hover .dropdown-toggle::after {
+      transform: rotate(180deg);
+    }
+
+    nav .dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 150ms ease;
+      border-left: 3px solid transparent;
+    }
+
+    nav .dropdown-menu a:hover {
+      background: #eef0ff;
+      border-left-color: var(--yellow);
+      padding-left: 18px;
+    }
+
+    nav .dropdown-menu a:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+
+    nav .dropdown-menu a:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+    @keyframes float { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.05); } 100% { transform: translateY(0) scale(1); } }
+    .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gradient);z-index:60;box-shadow:0 2px 20px rgba(249,160,48,0.25);}    
+    .btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border);cursor:pointer;padding:13px 18px;border-radius:14px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform 120ms ease,box-shadow 200ms ease,filter 120ms ease;}
+    .btn-primary{background:#F9A030;color:#1a1a1a;box-shadow:var(--shadow);} .btn-primary:hover{background:#e18d00;transform:translateY(-1px);box-shadow:var(--shadow-strong);}
+    .btn-ghost{background:#fff;color:var(--blue);box-shadow:var(--shadow);} .btn-ghost:hover{transform:translateY(-1px);box-shadow:var(--shadow-strong);}    
+    section.block{padding:70px 0;}
+    .card{position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:26px;color:#2b3150;box-shadow:var(--shadow);overflow:hidden;}
+    .card h2{display:inline-flex;align-items:center;gap:10px;margin:0 0 12px;font-size:clamp(1.6rem,2.8vw,2rem);color:var(--blue);} .card h2::before{content:"";height:10px;width:28px;border-radius:6px;background:var(--gradient);} .card p{font-size:1.05rem;line-height:1.7;}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+    /* Location composite card */
+    .location-wrap{display:grid;grid-template-columns:260px 1fr;gap:26px;align-items:center;}
+    .location-wrap img{width:100%;height:180px;object-fit:cover;border-radius:16px;box-shadow:0 4px 20px rgba(17,19,26,0.15),0 0 28px 4px #F9A03033;border:4px solid #fff;}
+    .location-wrap a.map{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--gradient);color:#fff;text-decoration:none;font-weight:600;border-radius:10px;padding:8px 14px;box-shadow:var(--shadow);font-size:.9rem;}
+    .location-wrap a.map:hover{filter:brightness(1.05);box-shadow:var(--shadow-strong);}
+    @media(max-width:900px){.grid-2{grid-template-columns:1fr;} .location-wrap{grid-template-columns:1fr;}}
+    @media(max-width:600px){section.block{padding:56px 0;} .card{padding:22px;} .location-wrap img{height:200px;} .title .name{font-size:1.4rem;}}
+
+    footer{text-align:center;color:#677084;padding:40px 1rem;font-size:.95rem;border-top:1px solid var(--border);background:#fff;}
+  </style>
+</head>
+<body>
+  <div id="progress" class="progress" aria-hidden="true"></div>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="branding" aria-label="ON-EAR home">
+        <div class="logo"><img src="Logo_v3.png" alt="ON-EAR logo"></div>
+        <div class="title"><div class="name"><span class="on">ON-</span><span class="ear">EAR</span></div><div class="tag">Ontario Network for Emerging Auditory Research</div></div>
+      </a>
+      <nav aria-label="Primary">
+        <a href="index.html#about">About</a>
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle">Events</a>
+          <div class="dropdown-menu">
+            <a href="program2025.html">2025 Research Day</a>
+            <a href="index.html#event">2026 Research Day</a>
+          </div>
+        </div>
+        <a href="https://tmu-emarketplace.paymytuition.com/2026-on-ear-research-day" target="_blank" rel="noopener">Registration</a>
+        <a href="https://ryersonpsych.co1.qualtrics.com/jfe/form/SV_5dOP1dfr9Ya61kq" target="_blank" rel="noopener">Abstracts</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Program Overview --> 
+  <section class="block" id="program-intro">
+    <div class="container">
+      <article class="card">
+<!-- 2026 Program Overview -->
+        <div style="text-align:center;margin:-26px -26px 32px;padding:48px 26px;background:var(--gradient);border-radius:var(--radius) var(--radius) 0 0;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(41,44,119,0.7), rgba(249,160,48,0.5));"></div>
+          <div style="position:absolute;inset:0;background:radial-gradient(800px circle at 70% 50%, rgba(249,160,48,0.15), transparent);"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(20deg, rgba(41,44,119,0.1), transparent);"></div>
+
+          <div style="position:relative;max-width:720px;margin:0 auto;">
+            <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;">
+              <div style="flex:1;min-width:280px;max-width:400px;">
+                <span style="display:inline-block;background:rgba(249,160,48,0.15);padding:4px 12px;border-radius:12px;color:white;font-size:0.9rem;margin-bottom:12px;backdrop-filter:blur(10px);border:1px solid rgba(249,160,48,0.25);font-weight:600;letter-spacing:0.3px;">December 4, 2026</span>
+                <h1 style="margin:0 0 12px;color:white;font-size:clamp(1.8rem,3vw,2.2rem);font-weight:700;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,0.15);letter-spacing:-0.3px;">2026 Research Day Program</h1>
+              </div>
+
+              <div style="flex:1;min-width:280px;max-width:400px;text-align:left;padding-left:20px;border-left:2px solid rgba(249,160,48,0.3);">
+                <div style="color:rgba(255,255,255,0.9);font-size:0.9rem;line-height:1.5;">
+                  <strong style="color:var(--yellow);font-weight:500;display:block;margin-bottom:4px;">Program</strong>
+                  The detailed program will be released after abstract review.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location Card -->
+        <div style="background:white;margin:-16px 0 24px;padding:24px;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);">
+          <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+            <img src="https://www.torontomu.ca/content/dam/tedrogersschool/images/tmu-trsm-building-exterior-v1.jpg" alt="Toronto Metropolitan University" style="width:120px;height:120px;object-fit:cover;border-radius:10px;box-shadow:0 4px 14px rgba(17,19,26,0.08);">
+            <div>
+              <div style="font-weight:600;color:var(--blue);margin-bottom:8px;font-size:1.1rem;">Ted Rogers School of Management</div>
+              <div style="color:var(--muted);line-height:1.5;">
+                Toronto Metropolitan University<br>
+                Toronto, Ontario
+              </div>
+              <div style="margin-top:12px;color:var(--blue);font-weight:600;">Friday, December 4, 2026</div>
+              <a href="https://www.google.com/maps/place/Ted+Rogers+School+of+Management/@43.6557921,-79.3847915,17z/data=!3m2!4b1!5s0x882b34cb605da33d:0xb43516d7166c5015!4m6!3m5!1s0x882b34cb08c0ab6d:0xddc4fb55422aed90!8m2!3d43.6557882!4d-79.3822166!16s%2Fg%2F11c5gb_3vs?entry=ttu&g_ep=EgoyMDI2MDcyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener"
+                 style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:var(--gradient);color:#fff;text-decoration:none;font-weight:600;border-radius:10px;padding:8px 14px;box-shadow:var(--shadow);font-size:.9rem;">
+                View on Map
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Keynote Speakers -->
+        <div style="background:var(--soft);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:32px 0;box-shadow:var(--shadow);position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:radial-gradient(800px circle at 100% 100%, rgba(249,160,48,0.04), transparent);animation:float 12s ease-in-out infinite reverse;"></div>
+          <div style="position:relative;">
+            <h2>Keynote Speakers</h2>
+            <p>
+              The 2026 ON-EAR Research Day will feature two keynote presentations.
+            </p>
+
+            <!-- Lauren Fink -->
+            <div style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin-top:22px;box-shadow:var(--shadow);">
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:26px;align-items:start;">
+                <img
+                  src="https://arieal.humanities.mcmaster.ca/wp-content/uploads/2024/03/Fink_bioPhoto_smaller-1024x982.jpg"
+                  alt="Dr. Lauren Fink"
+                  style="width:180px;height:180px;object-fit:cover;border-radius:14px;box-shadow:0 4px 16px rgba(17,19,26,0.12);"
+                >
+                <div>
+                  <div style="color:var(--yellow);font-weight:800;font-size:0.85rem;letter-spacing:0.8px;margin-bottom:6px;">RISING STAR KEYNOTE</div>
+                  <h3 style="margin:0 0 8px;color:var(--blue);font-size:1.5rem;">Dr. Lauren Fink</h3>
+                  <div style="font-weight:800;color:var(--ink);font-size:1.12rem;line-height:1.5;margin-bottom:14px;">
+                    Tracking Auditory Attention Across Time, People, and Places
+                  </div>
+                  <p style="margin:0;color:var(--muted);line-height:1.75;">
+                    In this talk, Dr. Fink will trace the development of her research from early laboratory-based pupillometry studies of fluctuations in attention during music listening to current studies in which more than 30 people are eye-tracked simultaneously during live concerts, film screenings, and audiovisual art exhibitions. She will discuss what these approaches can reveal about attention during real-world listening, as well as the methodological challenges of studying auditory experience across participants, social environments, and longer timescales.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Susan Scollie -->
+            <div style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin-top:22px;box-shadow:var(--shadow);">
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:26px;align-items:start;">
+                <img
+                  src="https://www.uwo.ca/fhs/csd/img/ppl/scollie_s_160x180.jpg"
+                  alt="Dr. Susan Scollie"
+                  style="width:180px;height:202px;object-fit:cover;border-radius:14px;box-shadow:0 4px 16px rgba(17,19,26,0.12);"
+                >
+                <div>
+                  <div style="color:var(--yellow);font-weight:800;font-size:0.85rem;letter-spacing:0.8px;margin-bottom:6px;">DISTINGUISHED KEYNOTE</div>
+                  <h3 style="margin:0 0 8px;color:var(--blue);font-size:1.5rem;">Dr. Susan Scollie</h3>
+                  <div style="font-weight:800;color:var(--ink);font-size:1.12rem;line-height:1.5;margin-bottom:14px;">
+                    Innovations in Audiology: Hearing Research in Action
+                  </div>
+                  <p style="margin:0;color:var(--muted);line-height:1.75;">
+                    Additional keynote details will be announced with the full program.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style>
+          @media(max-width:700px){
+            #program-intro .card > div div[style*="grid-template-columns:180px 1fr"]{
+              grid-template-columns:1fr !important;
+            }
+            #program-intro .card > div div[style*="grid-template-columns:180px 1fr"] img{
+              width:160px !important;
+              height:160px !important;
+            }
+          }
+        </style>
+
+        <!-- Expected Program Components -->
+        <div style="background:var(--soft);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:32px 0;box-shadow:var(--shadow);">
+          <h2>Expected Program</h2>
+          <p style="margin-bottom:18px;">The final schedule is expected to include:</p>
+
+          <div style="display:grid;gap:12px;">
+            <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:16px 18px;font-weight:600;color:var(--ink);">Keynote presentations</div>
+            <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:16px 18px;font-weight:600;color:var(--ink);">Selected oral research presentations</div>
+            <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:16px 18px;font-weight:600;color:var(--ink);">Student and trainee poster presentations</div>
+            <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:16px 18px;font-weight:600;color:var(--ink);">Networking and discussion opportunities</div>
+            <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:16px 18px;font-weight:600;color:var(--ink);">Awards and closing remarks</div>
+          </div>
+        </div>
+
+
+        <!-- Actions -->
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:32px 0 12px;">
+          <a class="btn btn-primary" href="https://tmu-emarketplace.paymytuition.com/2026-on-ear-research-day" target="_blank" rel="noopener">Register for Research Day</a>
+          <a class="btn btn-ghost" href="https://ryersonpsych.co1.qualtrics.com/jfe/form/SV_5dOP1dfr9Ya61kq" target="_blank" rel="noopener">Submit an Abstract</a>
+        </div>
+
+        <div style="height:20px;"></div>
+      </article>
+    </div>
+  </section>
+  <footer>
+    <div class="container">&copy; 2026 ON-EAR. All rights reserved.</div>
+  </footer>
+  <script>
+    const progress = document.getElementById('progress');
+    const headerEl = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progress.style.width = Math.min(100, (scrollTop / scrollHeight) * 100) + '%';
+      headerEl.style.boxShadow = scrollTop > 6 ? '0 6px 24px rgba(17,19,26,0.08)' : 'none';
+    });
+  </script>
+</body>
+</html>
