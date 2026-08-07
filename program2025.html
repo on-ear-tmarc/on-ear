@@ -26,16 +26,16 @@
     .container{width:min(900px,92vw);margin:0 auto;position:relative;z-index:1;}
     header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow .2s ease;}
     header:hover { box-shadow: 0 8px 24px rgba(17, 19, 26, 0.08); }
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;}
-    .branding{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;transition:transform 150ms ease;}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:10px;}
+    .branding{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;transition:transform 150ms ease;flex-shrink:0;}
     .branding:hover { transform: translateY(-1px); }
-    .logo img{height:56px;width:auto;display:block;border-radius:10px;box-shadow:0 4px 14px rgba(17,19,26,0.08);transition:transform 150ms ease;}
+    .logo img{height:48px;width:auto;display:block;border-radius:10px;box-shadow:0 4px 14px rgba(17,19,26,0.08);transition:transform 150ms ease;}
     .logo img:hover { transform: scale(1.02); }
     .title{display:grid;}
-    .title .name{font-weight:800;letter-spacing:.2px;font-size:1.55rem;line-height:1.05;}
-    .on{color:var(--blue);font-weight:800;font-size:1.55rem;} .ear{color:var(--yellow);font-weight:800;font-size:1.55rem;} .tag{color:var(--muted);font-size:.95rem;}
-    nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
-    nav a{color:var(--blue);text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:600;transition:all 150ms ease;}
+    .title .name{font-weight:800;letter-spacing:.2px;font-size:1.35rem;line-height:1.05;}
+    .on{color:var(--blue);font-weight:800;font-size:1.35rem;} .ear{color:var(--yellow);font-weight:800;font-size:1.35rem;} .tag{color:var(--muted);font-size:.82rem;}
+    nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;margin-left:auto;}
+    nav a{color:var(--blue);text-decoration:none;padding:8px 8px;border-radius:12px;font-weight:600;font-size:.95rem;white-space:nowrap;transition:all 150ms ease;}
     nav a:hover{background:#eef0ff;transform:translateY(-1px);}
     /* Navigation dropdown */
     nav .dropdown {
@@ -44,7 +44,7 @@
 
     nav .dropdown-toggle {
       position: relative;
-      padding: 10px 14px;
+      padding: 8px 8px;
       border-radius: 12px;
       transition: all 150ms ease;
     }
@@ -214,17 +214,21 @@
         <div class="logo"><img src="Logo_v3.png" alt="ON-EAR logo"></div>
         <div class="title"><div class="name"><span class="on">ON-</span><span class="ear">EAR</span></div><div class="tag">Ontario Network for Emerging Auditory Research</div></div>
       </a>
-      <nav aria-label="Primary">
+      <nav aria-label="Primary navigation">
         <a href="index.html#about">About</a>
+
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle">Events</a>
+          <a href="index.html#research-day" class="dropdown-toggle">Events</a>
           <div class="dropdown-menu">
+            <a href="index.html#research-day">2026 Research Day</a>
             <a href="program2025.html">2025 Research Day</a>
-            <a href="index.html#event">2026 Research Day</a>
           </div>
         </div>
-        <a href="https://tmu-emarketplace.paymytuition.com/2026-on-ear-research-day" target="_blank" rel="noopener">Registration</a>
-        <a href="https://ryersonpsych.co1.qualtrics.com/jfe/form/SV_5dOP1dfr9Ya61kq" target="_blank" rel="noopener">Abstracts</a>
+
+        <a href="program2026.html">2026 Program</a>
+
+        <a href="https://tmu-emarketplace.paymytuition.com/2026-on-ear-research-day" target="_blank" rel="noopener noreferrer">Registration</a>
+        <a href="https://ryersonpsych.co1.qualtrics.com/jfe/form/SV_5dOP1dfr9Ya61kq" target="_blank" rel="noopener noreferrer">Abstracts</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>

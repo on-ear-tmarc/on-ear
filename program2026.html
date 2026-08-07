@@ -26,16 +26,16 @@
     .container{width:min(900px,92vw);margin:0 auto;position:relative;z-index:1;}
     header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow .2s ease;}
     header:hover { box-shadow: 0 8px 24px rgba(17, 19, 26, 0.08); }
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;}
-    .branding{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;transition:transform 150ms ease;}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:10px;}
+    .branding{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;transition:transform 150ms ease;flex-shrink:0;}
     .branding:hover { transform: translateY(-1px); }
-    .logo img{height:56px;width:auto;display:block;border-radius:10px;box-shadow:0 4px 14px rgba(17,19,26,0.08);transition:transform 150ms ease;}
+    .logo img{height:48px;width:auto;display:block;border-radius:10px;box-shadow:0 4px 14px rgba(17,19,26,0.08);transition:transform 150ms ease;}
     .logo img:hover { transform: scale(1.02); }
     .title{display:grid;}
-    .title .name{font-weight:800;letter-spacing:.2px;font-size:1.55rem;line-height:1.05;}
-    .on{color:var(--blue);font-weight:800;font-size:1.55rem;} .ear{color:var(--yellow);font-weight:800;font-size:1.55rem;} .tag{color:var(--muted);font-size:.95rem;}
-    nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
-    nav a{color:var(--blue);text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:600;transition:all 150ms ease;}
+    .title .name{font-weight:800;letter-spacing:.2px;font-size:1.35rem;line-height:1.05;}
+    .on{color:var(--blue);font-weight:800;font-size:1.35rem;} .ear{color:var(--yellow);font-weight:800;font-size:1.35rem;} .tag{color:var(--muted);font-size:.82rem;}
+    nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;margin-left:auto;}
+    nav a{color:var(--blue);text-decoration:none;padding:8px 8px;border-radius:12px;font-weight:600;font-size:.95rem;white-space:nowrap;transition:all 150ms ease;}
     nav a:hover{background:#eef0ff;transform:translateY(-1px);}
     /* Navigation dropdown */
     nav .dropdown {
@@ -44,7 +44,7 @@
 
     nav .dropdown-toggle {
       position: relative;
-      padding: 10px 14px;
+      padding: 8px 8px;
       border-radius: 12px;
       transition: all 150ms ease;
     }
@@ -282,7 +282,15 @@
         </div>
 
 
-        <!-- Actions -->
+        
+        <!-- Trainee Involvement -->
+        <div style="background:#fff8ee;border:1px solid rgba(249,160,48,0.35);border-radius:var(--radius);padding:32px;margin:32px 0;box-shadow:var(--shadow);">
+          <h2>Trainee Involvement Opportunities</h2>
+          <p>We are looking for undergraduate, graduate, and postdoctoral trainees who would like to help with the organization and planning of ON-EAR Research Day, as well as support activities on the day of the event.</p>
+          <p>Interested trainees can contact <a href="mailto:tmarc@torontomu.ca" style="color:var(--blue);font-weight:700;">tmarc@torontomu.ca</a>.</p>
+        </div>
+
+<!-- Actions -->
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:32px 0 12px;">
           <a class="btn btn-primary" href="https://tmu-emarketplace.paymytuition.com/2026-on-ear-research-day" target="_blank" rel="noopener">Register for Research Day</a>
           <a class="btn btn-ghost" href="https://ryersonpsych.co1.qualtrics.com/jfe/form/SV_5dOP1dfr9Ya61kq" target="_blank" rel="noopener">Submit an Abstract</a>
